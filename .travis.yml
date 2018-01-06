@@ -1,0 +1,29 @@
+env:
+  matrix:
+#    - ARCH=x86_64
+#      DOCKER_BUILD=causticlab/hass-configurator-docker:${VERSION}
+#      DOCKERFILE=Dockerfile.amd64
+    - ARCH=rpi
+      DOCKERFILE=Dockerfile.rpi
+
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - VERSION = $(shell cat VERSION)
+  - DOCKER_BUILD=causticlab/hass-configurator-docker:${ARCH}-${VERSION}
+
+install:
+  - rm -rf ./src/
+  - git clone https://github.com/danielperna84/hass-configurator.git ./src
+
+script:
+  - docker build -t ${DOCKER_BUILD} -f ${DOCKERFILE} .
+
+after_success:
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  - docker push ${DOCKER_BUILD}
+
+if: tag IS present
