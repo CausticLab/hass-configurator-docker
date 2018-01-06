@@ -1,5 +1,5 @@
 # hass-configurator-docker
-Linux x32/64 and ARM builds for the hass-configurator
+Linux x32/64 and ARM (raspberry) builds for the hass-configurator
 
 [![Build Status](https://travis-ci.org/CausticLab/hass-configurator-docker.svg?branch=0.2.4)](https://travis-ci.org/CausticLab/hass-configurator-docker)
 
