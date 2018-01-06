@@ -20,6 +20,7 @@ install:
   - git clone https://github.com/danielperna84/hass-configurator.git ./src
 
 script:
+  - docker run --rm --privileged multiarch/qemu-user-static:register
   - docker build -t ${DOCKER_BUILD} -f ${DOCKERFILE} .
 
 after_success:
