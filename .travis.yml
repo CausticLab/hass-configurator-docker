@@ -28,3 +28,6 @@ after_success:
   - docker push ${DOCKER_BUILD}
 
 if: tag IS present
+
+notifications:
+  email: false
