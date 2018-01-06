@@ -3,7 +3,7 @@ env:
 #    - ARCH=x86_64
 #      DOCKER_BUILD=causticlab/hass-configurator-docker:${VERSION}
 #      DOCKERFILE=Dockerfile.amd64
-    - ARCH=rpi
+    - ARCH=arm
       DOCKERFILE=Dockerfile.rpi
 
 sudo: required
