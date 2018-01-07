@@ -19,8 +19,8 @@ Example docker-compose.yaml
       - "./data/configurator-config:/config"
       - "./data/config:/hass-config"
 ```
-Be sure to map the config folder of your homeassistant instance to the configurator container and set the `basepath` in your configuration 
-The configuration needs to be mapped to `/config` and needs to be named `settings.conf`
+Be sure to map the config folder of your homeassistant instance to the configurator container and set the `basepath` in your configuration.
+The configuration needs to be mapped to `/config` and needs to be named `settings.conf`.
 
 
 ### Links
