@@ -1,7 +1,7 @@
 # hass-configurator-docker
 Linux x32/64 and ARM (raspberry) builds for the hass-configurator
 
-[![Build Status](https://travis-ci.org/CausticLab/hass-configurator-docker.svg?branch=0.2.6)](https://travis-ci.org/CausticLab/hass-configurator-docker)
+[![Build Status](https://travis-ci.org/CausticLab/hass-configurator-docker.svg?branch=0.2.8)](https://travis-ci.org/CausticLab/hass-configurator-docker)
 
 
 ### Usage
@@ -9,7 +9,7 @@ Linux x32/64 and ARM (raspberry) builds for the hass-configurator
 Example docker-compose.yaml
 ```yaml
   hass-configurator:
-    image: "causticlab/hass-configurator-docker:arm-0.2.6"
+    image: "causticlab/hass-configurator-docker:arm-0.2.8"
     restart: always
     ports:
       - "3218:3218/tcp"
