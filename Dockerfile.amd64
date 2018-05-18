@@ -1,6 +1,11 @@
 FROM python:3-alpine
 MAINTAINER Martin <Munsio> Treml
 
+RUN apk update && apk upgrade && \
+    apk add --no-cache bash git openssh
+
+RUN pip install --no-cache-dir gitpython
+
 WORKDIR /app
 COPY ./src/configurator.py ./run.sh /app/
 RUN chmod a+x ./configurator.py ./run.sh
