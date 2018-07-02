@@ -1,7 +1,7 @@
 env:
   matrix:
     - ARCH=x86_64
-      DOCKER_BUILD=causticlab/hass-configurator-docker:${VERSION}
+      DOCKER_BUILD=${DOCKER_USERNAME}/hass-configurator-docker:${VERSION}
       DOCKERFILE=Dockerfile.amd64
     - ARCH=arm
       DOCKERFILE=Dockerfile.rpi
@@ -13,7 +13,7 @@ services:
 
 before_install:
   - VERSION=`cat VERSION`
-  - DOCKER_BUILD=causticlab/hass-configurator-docker:${ARCH}-${VERSION}
+  - DOCKER_BUILD=${DOCKER_USERNAME}/hass-configurator-docker:${ARCH}-${VERSION}
 
 install:
   - rm -rf ./src/
