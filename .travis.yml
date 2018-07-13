@@ -21,6 +21,7 @@ install:
   - cd ./src
   - git checkout -qf dev
   - cd ..
+  - sed -i 's/GIT = False/GIT = True/g' ./src/configurator.py
 
 script:
   - docker run --rm --privileged multiarch/qemu-user-static:register
