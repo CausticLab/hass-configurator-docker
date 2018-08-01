@@ -4,7 +4,7 @@ Linux x32/64 and ARM (raspberry) builds for the hass-configurator
 [![Build Status](https://travis-ci.org/CausticLab/hass-configurator-docker.svg?branch=0.2.9)](https://travis-ci.org/CausticLab/hass-configurator-docker)
 
 
-### Usage
+## Usage
 
 Example docker-compose.yaml
 ```yaml
@@ -23,7 +23,7 @@ Be sure to map the config folder of your homeassistant instance to the configura
 The configuration needs to be mapped to `/config` and needs to be named `settings.conf`.
 Please remember to change the tag to your architecture
 
-## GIT Integration
+#### GIT Integration
 
 In order to use the git integration with hass-configurator you have to use one of the following options.
 
@@ -41,7 +41,7 @@ In order to use the git integration with hass-configurator you have to use one o
 https://<github username>:<some token>@github.com/<github username>/<some repo>.git
 ```
 
-### Links
+## Links
 
 - Original Repository by [danielperna86](https://github.com/danielperna84/hass-configurator)
 - Docker Images are on [docker hub](https://hub.docker.com/r/causticlab/hass-configurator-docker/)
