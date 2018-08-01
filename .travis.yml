@@ -18,6 +18,7 @@ before_install:
 install:
   - rm -rf ./src/
   - git clone https://github.com/danielperna84/hass-configurator.git ./src
+  - sed -i 's/GIT = False/GIT = True/g' ./src/configurator.py
 
 script:
   - docker run --rm --privileged multiarch/qemu-user-static:register
