@@ -43,6 +43,6 @@ https://<github username>:<some token>@github.com/<github username>/<some repo>.
 
 ## Links
 
-- Original Repository by [danielperna86](https://github.com/danielperna84/hass-configurator)
+- Original Repository by [danielperna84](https://github.com/danielperna84/hass-configurator)
 - Docker Images are on [docker hub](https://hub.docker.com/r/causticlab/hass-configurator-docker/)
 - The corresponding [github repository](https://github.com/CausticLab/hass-configurator-docker)
