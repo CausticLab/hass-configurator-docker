@@ -23,6 +23,23 @@ Be sure to map the config folder of your homeassistant instance to the configura
 The configuration needs to be mapped to `/config` and needs to be named `settings.conf`.
 Please remember to change the tag to your architecture
 
+## GIT Integration
+
+In order to use the git integration with hass-configurator you have to use one of the following options.
+
+1. Mount the ssh files
+```yaml
+  hass-configurator:
+    volumes:
+      - "/path/.ssh/id_rsa:/root/.ssh/id_rsa:ro"
+      - "/path/.ssh/id_rsa.pub:/root/.ssh/id_rsa.pub:ro"
+      - "/path/.ssh/known_hosts:/root/.ssh/known_hosts:rw"
+```
+
+2. Use the https version with an github token
+```
+https://<github username>:<some token>@github.com/<github username>/<some repo>.git
+```
 
 ### Links
 
