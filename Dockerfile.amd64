@@ -4,7 +4,7 @@ MAINTAINER Martin <Munsio> Treml
 RUN apk update && apk upgrade && \
     apk add --no-cache bash git openssh
 
-RUN pip install --no-cache-dir gitpython
+RUN pip install --no-cache-dir gitpython pyotp
 
 WORKDIR /app
 COPY ./src/configurator.py ./run.sh /app/
