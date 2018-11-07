@@ -11,7 +11,7 @@ COPY ./src/configurator.py ./run.sh /app/
 RUN chmod a+x ./configurator.py ./run.sh
 
 # Default listening port.
-EXPOSE 8123
+EXPOSE 3218
 
 # The configuration yaml for persistance.
 VOLUME /config
