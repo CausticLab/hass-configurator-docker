@@ -1,7 +1,7 @@
 # hass-configurator-docker
 Linux x32/64 and ARM (raspberry) builds for the hass-configurator
 
-[![Build Status](https://travis-ci.org/CausticLab/hass-configurator-docker.svg?branch=0.3.1)](https://travis-ci.org/CausticLab/hass-configurator-docker)
+[![Build Status](https://travis-ci.org/CausticLab/hass-configurator-docker.svg?branch=0.3.3)](https://travis-ci.org/CausticLab/hass-configurator-docker)
 
 
 ## Usage
@@ -9,7 +9,7 @@ Linux x32/64 and ARM (raspberry) builds for the hass-configurator
 Example docker-compose.yaml
 ```yaml
   hass-configurator:
-    image: "causticlab/hass-configurator-docker:arm-0.3.1"
+    image: "causticlab/hass-configurator-docker:arm-0.3.3"
     restart: always
     ports:
       - "3218:3218/tcp"
@@ -19,9 +19,13 @@ Example docker-compose.yaml
       - "./data/configurator-config:/config"
       - "./data/config:/hass-config"
 ```
+Please remember to change the tag to your architecture
+
+#### Configuration
 Be sure to map the config folder of your homeassistant instance to the configurator container and set the `basepath` in your configuration.
 The configuration needs to be mapped to `/config` and needs to be named `settings.conf`.
-Please remember to change the tag to your architecture
+
+As with Verion 0.3.3 it is also possible to use environment vars to set configurations but you will still need your hass-config folder mapped into the container.
 
 #### GIT Integration
 
