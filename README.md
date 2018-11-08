@@ -45,6 +45,10 @@ In order to use the git integration with hass-configurator you have to use one o
 https://<github username>:<some token>@github.com/<github username>/<some repo>.git
 ```
 
+#### DockerHub Tag
+As with version 0.3.3 the pattern of the docker image was changed to use semver, for backwards compatibility version 0.3.3 will have both versions up in the docker hub
+
+
 ## Links
 
 - Original Repository by [danielperna84](https://github.com/danielperna84/hass-configurator)
