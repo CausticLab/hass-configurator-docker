@@ -1,7 +1,7 @@
 # hass-configurator-docker
 Linux x32/64 and ARM (raspberry) builds for the hass-configurator
 
-[![Build Status](https://travis-ci.org/CausticLab/hass-configurator-docker.svg?branch=0.3.3)](https://travis-ci.org/CausticLab/hass-configurator-docker)
+[![Build Status](https://travis-ci.org/CausticLab/hass-configurator-docker.svg)](https://travis-ci.org/CausticLab/hass-configurator-docker)
 
 
 ## Usage
@@ -9,7 +9,7 @@ Linux x32/64 and ARM (raspberry) builds for the hass-configurator
 Example docker-compose.yaml
 ```yaml
   hass-configurator:
-    image: "causticlab/hass-configurator-docker:arm-0.3.3"
+    image: "causticlab/hass-configurator-docker:arm"
     restart: always
     ports:
       - "3218:3218/tcp"
@@ -47,7 +47,7 @@ https://<github username>:<some token>@github.com/<github username>/<some repo>.
 
 #### DockerHub Tag
 As with version 0.3.3 the pattern of the docker image was changed to use semver, for backwards compatibility version 0.3.3 will have both versions up in the docker hub
-
+As with version 0.3.3 2018-12-23 there is also an ARCH only tag on docker hub marking an image as "latest" for the specific ARCH
 
 ## Links
 
