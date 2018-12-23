@@ -1,7 +1,7 @@
 language: ruby
 
 # Only build tags
-#if: tag IS present
+if: tag IS present
 
 env:
   matrix:
