@@ -1,7 +1,8 @@
+language: ruby
+
 env:
   matrix:
     - ARCH=x86_64
-      DOCKER_BUILD=causticlab/hass-configurator-docker:${VERSION}
       DOCKERFILE=Dockerfile.amd64
     - ARCH=arm
       DOCKERFILE=Dockerfile.rpi
@@ -13,7 +14,9 @@ services:
 
 before_install:
   - VERSION=`cat VERSION`
+  - LATESTVERSION=`curl https://raw.githubusercontent.com/CausticLab/hass-configurator-docker/master/VERSION`
   - DOCKER_BUILD=causticlab/hass-configurator-docker:${VERSION}-${ARCH}
+  - DOCKER_BUILD_NOVER=causticlab/hass-configurator-docker:${ARCH}
 
 install:
   - rm -rf ./src/
@@ -23,12 +26,13 @@ install:
 script:
   - docker run --rm --privileged multiarch/qemu-user-static:register
   - docker build -t ${DOCKER_BUILD} -f ${DOCKERFILE} .
+  - if [ $VERSION == $LATESTVERSION ];
+    then docker tag ${DOCKER_BUILD} ${DOCKER_BUILD_NOVER};
+    fi
 
 after_success:
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
   - docker push ${DOCKER_BUILD}
-
-if: tag IS present
 
 notifications:
   email: false
