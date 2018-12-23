@@ -1,5 +1,8 @@
 language: ruby
 
+# Only build tags
+if: tag IS present
+
 env:
   matrix:
     - ARCH=x86_64
@@ -33,6 +36,9 @@ script:
 after_success:
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
   - docker push ${DOCKER_BUILD}
+  - if [ $VERSION == $LATESTVERSION ];
+    then docker push ${DOCKER_BUILD_NOVER};
+    fi
 
 notifications:
   email: false
