@@ -1,4 +1,4 @@
-FROM mielune/alpine-python3-arm
+FROM python:3-alpine
 MAINTAINER Martin <Munsio> Treml
 
 RUN apk update && apk upgrade && \

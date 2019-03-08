@@ -2,7 +2,8 @@
 Linux x32/64 and ARM (raspberry) builds for the hass-configurator
 
 [![Build Status](https://travis-ci.org/CausticLab/hass-configurator-docker.svg)](https://travis-ci.org/CausticLab/hass-configurator-docker)
-
+![Docker Pulls](https://img.shields.io/docker/pulls/causticlab/hass-configurator-docker.svg)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/causticlab/hass-configurator-docker.svg?label=version)
 
 ## Usage
 
@@ -25,7 +26,7 @@ Please remember to change the tag to your architecture
 Be sure to map the config folder of your homeassistant instance to the configurator container and set the `basepath` in your configuration.
 The configuration needs to be mapped to `/config` and needs to be named `settings.conf`.
 
-As with Verion 0.3.3 it is also possible to use environment vars to set configurations but you will still need your hass-config folder mapped into the container.
+As with Version 0.3.3 it is also possible to use environment vars to set configurations but you will still need your hass-config folder mapped into the container.
 
 #### GIT Integration
 
