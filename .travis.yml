@@ -27,7 +27,7 @@ install:
   - sed -i 's/GIT = False/GIT = True/g' ./src/configurator.py
 
 script:
-  - docker run --rm --privileged multiarch/qemu-user-static:register
+  - docker run --rm --privileged multiarch/qemu-user-static:register --reset
   - docker build -t ${DOCKER_BUILD} -f ${DOCKERFILE} .
   - if [ $VERSION == $LATESTVERSION ];
     then docker tag ${DOCKER_BUILD} ${DOCKER_BUILD_NOVER};
