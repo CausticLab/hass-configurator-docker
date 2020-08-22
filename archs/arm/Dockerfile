@@ -4,9 +4,6 @@ WORKDIR /app
 
 ARG HC_BUILD_VERSION
 
-ENV HC_GIT true
-ENV HC_BASEPATH /config
-
 RUN apk update && \
     apk upgrade && \
     apk add --no-cache bash git openssh && \
