@@ -15,10 +15,6 @@ before_install:
 - LATESTVERSION=`curl https://raw.githubusercontent.com/CausticLab/hass-configurator-docker/master/VERSION`
 - DOCKER_BUILD=causticlab/hass-configurator-docker:${VERSION}-${ARCH}
 - DOCKER_BUILD_NOVER=causticlab/hass-configurator-docker:${ARCH}
-install:
-- rm -rf ./src/
-- git clone https://github.com/danielperna84/hass-configurator.git ./src
-- sed -i 's/GIT = False/GIT = True/g' ./src/configurator.py
 script:
 - docker run --rm --privileged multiarch/qemu-user-static:register
 - docker build -f ./archs/${ARCH}/Dockerfile --build-arg HC_BUILD_VERSION=${VERSION} . -t ${DOCKER_BUILD}
