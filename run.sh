@@ -2,8 +2,8 @@
 
 if [ ! -f /config/settings.conf ]; then
     echo "No configuration file found proceeding with default values"
-    python3 /app/configurator.py
+    hass-configurator
 else
     echo "Configuration file found starting configurator with provided settings"
-    python3 /app/configurator.py /config/settings.conf
+    hass-configurator /config/settings.conf
 fi

@@ -2,8 +2,8 @@ language: ruby
 if: tag IS present
 env:
   matrix:
-  - ARCH=x86_64 DOCKERFILE=Dockerfile.amd64
-  - ARCH=arm DOCKERFILE=Dockerfile.rpi
+  - ARCH=x86_64
+  - ARCH=arm
   global:
   - secure: XADX2sFZYWZqpRtB61Lt9eCXWvmVuHkQKLVDOkSHqoGQEKCzLIjKTCzADOpWvSKo4IL1FEmwGEBLRYi46EwUyYxP+LlMstACTkTn2J3rDh/hfq6lO1wOFQfUTrR+w1hoUc6nvT3MzcHVaZSPHpSV7zxYCPYJRxe4z9mqixYonnwkRPxa+SXnYHgy6qL0xR7oyw2RcoruwNbRXfOUMatJsJBj5wWIVErlBRKNettMo9J5ombkPc++dBF/srY0QIP8+oVi3DltlnEBRsW4bLq/31CC5r15bDVXfrVpit4ZbnlKm1O5ooMvS+OxLyqD7WpHTqUYMJzU8la03DotSdWPnEV7Zq3iQ06kqDvqS6YafMHZ5v+AAjAHlNJHkNvUovtY2FMwfG370AewJUmSHASzEkMroLPRwm9wms3a/Oke1QlHh6Y65XcQUlO70pqo3lEks8kIsVXyOFo2Q3V+hmxzO2WBIDZeDNcIgaEXcp4lvm7lsX2AAv973i9UpRBfUppUdEQio3b2WpvAg5xtDbQ/pcOn97Rt+QfD3Y53qzIHgEe1uogglSFO1Igz/GE5kpH7yWmWfrzy3Qw53kNfhx9mvkQJGpSw4xqT8+cB0zmdctsDoqrzOfqFj5biLEyMwKCnUDFR0hXRzF/fYk3csfAUTqRFLD1O0G04IGRmKfyeAkQ=
   - secure: BUiGlcTi4EQISDT3jg/LVJ78woU+H6g6i+Vu9NK9CBq5Y9mMD4tErJYPxrRNTf/5PEL4p1tzL0yiP8AzH6L8mnEQIfV+XBAk2XWCE2fTpb45pSjK7tn20vii7DcitvoHvBdqSunISAPEHRnVX9JC9qLzD/ye3cNfxlrVUOBYwBRf+2rXyKp+V4rnQ0+XB5ALTQAUzDxr+nzZ/jMVb3JlBhe3eETSICcE6NTfrrvvGpg79QssW41wGC7g23E843VwIKHkfhnP536yxxE84k33UU2Hbq6VPJNcJqF1moSoZZTtYeC8H47dPpJT5HEB71aZrjMuZDbmnhd3ibGNAkEymaeAosVXE+o8UnFF5Y/gFKde57U8Hqmy4n4+RGv+BrHALbWADUbIETzupzLDEctrHyNtSheKdej5DFvVkWunEUCHnk96sy/23Gj8fhPq7bBMpxRN9cSQE0x9hPXNSpY5vy2Vla5hlz150nISyYK459LmxgM5cCM6kwpAooQEjXNoDchNexzrRTXGc1dXX4oWDBBJqkVb/5D8b7dDdk62EMx2FWxBHjhlqptim4ioO+cA6CVGofM5SAwaH8pr3YKsljGsKDlrTotbkb5gIYP9IaNTzXRjyXeDBCN4EqbsDUnZameVLR1Nm37fhgA/ldUcCJyd/QYhNc8mXHKmUOPyihU=
@@ -15,13 +15,9 @@ before_install:
 - LATESTVERSION=`curl https://raw.githubusercontent.com/CausticLab/hass-configurator-docker/master/VERSION`
 - DOCKER_BUILD=causticlab/hass-configurator-docker:${VERSION}-${ARCH}
 - DOCKER_BUILD_NOVER=causticlab/hass-configurator-docker:${ARCH}
-install:
-- rm -rf ./src/
-- git clone https://github.com/danielperna84/hass-configurator.git ./src
-- sed -i 's/GIT = False/GIT = True/g' ./src/configurator.py
 script:
 - docker run --rm --privileged multiarch/qemu-user-static:register
-- docker build -t ${DOCKER_BUILD} -f ${DOCKERFILE} .
+- docker build -f ./archs/${ARCH}/Dockerfile --build-arg HC_BUILD_VERSION=${VERSION} . -t ${DOCKER_BUILD}
 - if [ $VERSION == $LATESTVERSION ]; then docker tag ${DOCKER_BUILD} ${DOCKER_BUILD_NOVER};
   fi
 after_success:
