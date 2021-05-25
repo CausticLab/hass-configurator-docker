@@ -1,4 +1,4 @@
-FROM mielune/alpine-python3-arm
+FROM python:3.9-alpine
 LABEL maintainer="Martin <Munsio> Treml"
 WORKDIR /app
 
