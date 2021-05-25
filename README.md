@@ -9,7 +9,7 @@ Linux x32/64 and ARM (raspberry) builds for the hass-configurator
 Example docker-compose.yaml
 ```yaml
   hass-configurator:
-    image: "causticlab/hass-configurator-docker:arm"
+    image: "causticlab/hass-configurator-docker:latest"
     restart: always
     ports:
       - "3218:3218/tcp"
@@ -19,7 +19,6 @@ Example docker-compose.yaml
       - "./data/configurator-config:/config"
       - "./data/config:/hass-config"
 ```
-Please remember to change the tag to your architecture
 
 #### Configuration
 Be sure to map the config folder of your homeassistant instance to the configurator container and set the `basepath` in your configuration.
@@ -46,6 +45,7 @@ https://<github username>:<some token>@github.com/<github username>/<some repo>.
 ```
 
 #### DockerHub Tag
+As with version 0.4.1 we moved to multi-arch containers so the all new containers are either tagged with version or latest.
 As with version 0.3.3 the pattern of the docker image was changed to use semver, for backwards compatibility version 0.3.3 will have both versions up in the docker hub
 As with version 0.3.3 2018-12-23 there is also an ARCH only tag on docker hub marking an image as "latest" for the specific ARCH
 
@@ -54,14 +54,10 @@ As with version 0.3.3 2018-12-23 there is also an ARCH only tag on docker hub ma
 If you want to build these repository locally you can do so with the following:
 
 ```
-docker build -f ./archs/x86_64/Dockerfile --build-arg HC_BUILD_VERSION=<VERSION_OF_HASS_CONFIGURATOR> . -t <YOUR_IMAGE_NAME> --no-cache
+docker build -f . --build-arg HC_BUILD_VERSION=<VERSION_OF_HASS_CONFIGURATOR> . -t <YOUR_IMAGE_NAME> --no-cache
 ```
 
 ### Breaking it down
-
-`-f ./archs/x86_64/Dockerfile` 
-
-This tells Docker where the Dockerfile is without changing the context of the Docker builder. You can change the desired architecture as well.
 
 `--build-arg HC_BUILD_VERSION=<VERSION_OF_HASS_CONFIGURATOR>`
 
