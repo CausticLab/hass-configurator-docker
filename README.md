@@ -16,15 +16,22 @@ Example docker-compose.yaml
     networks:
       - hass-network
     volumes:
+      # Config folder hass-configurator
       - "./data/configurator-config:/config"
+      # Config folder of your home assistant configuration
       - "./data/config:/hass-config"
+    # Example configuration: set configuration via environment variables
+    #environment:
+    #  HC_BASEPATH: "/hass-config/"
+    #  HC_ALLOWED_NETWORKS: "192.168.1.0/24"
+    #  HC_GIT: "True"
 ```
 
 #### Configuration
 Be sure to map the config folder of your homeassistant instance to the configurator container and set the `basepath` in your configuration.
 The configuration needs to be mapped to `/config` and needs to be named `settings.conf`.
 
-As with Verion 0.3.3 it is also possible to use environment vars to set configurations but you will still need your hass-config folder mapped into the container.
+As with Verion 0.3.3 it is also possible to use [environment vars](https://github.com/danielperna84/hass-configurator/wiki/Configuration#options) to set configurations but you will still need your hass-config folder mapped into the container.
 
 #### GIT Integration
 
